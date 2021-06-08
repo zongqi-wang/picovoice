@@ -39,6 +39,10 @@ def get_book_cached(isbn: str, cache: Cache):
     else:
         return cache.get(isbn)
 
+#########################################
+#### NOT RELATED TO WRAPPER FUNCTION ####
+#########################################
+
 
 @dataclass()
 class Book:
@@ -57,14 +61,15 @@ def get_book_info(isbn: str):
 
 books = {}
 
-# example of how to use the getbook function a
-
 
 def main():
-    cache = Cache(10)
+    # adding book to my lib
     for i in range(30):
         book = Book(f'{i} Title', f'{i} Author', 'English')
         books[str(i)] = book
+
+    # example of how to use the getbook function
+    cache = Cache(10)
 
     # testing
     for i in range(15):
