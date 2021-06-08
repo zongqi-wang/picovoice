@@ -1,21 +1,26 @@
 from collections import OrderedDict
 
+# used for testing
+from dataclasses import dataclass
 
-# Data structure to store the boos
+
 class Cache:
+    # Data structure to store the boos
 
     def __init__(self, Capacity):
         self.size = Capacity
         self.cache = OrderedDict()
 
-    def get(self, key: int):
+    def get(self, key: str):
+        # return -1 if not found
         if key not in self.cache:
             return -1
+        # if found, move to end
         val = self.cache[key]
         self.cache.move_to_end(key)
         return val
 
-    def put(self, key: int, val) -> None:
+    def put(self, key: str, val) -> None:
         if key in self.cache:
             del self.cache[key]
         self.cache[key] = val
@@ -25,13 +30,49 @@ class Cache:
 
 
 # Actual wrapper function
-cache = Cache(200)
-
-
-def get_book_cached(isbn: int):
+def get_book_cached(isbn: str, cache: Cache):
 
     if cache.get(isbn) == -1:
         book = get_book_info(isbn)
         cache.put(isbn, book)
+        return book
     else:
         return cache.get(isbn)
+
+
+@dataclass()
+class Book:
+    # dummy class used for testing
+    Title: str
+    Author: str
+    Language: str
+
+
+def get_book_info(isbn: str):
+    # dummy ISBN function
+    if(books[isbn]):
+        return books[isbn]
+    return -1
+
+
+books = {}
+
+# example of how to use the getbook function a
+
+
+def main():
+    cache = Cache(10)
+    for i in range(30):
+        book = Book(f'{i} Title', f'{i} Author', 'English')
+        books[str(i)] = book
+
+    # testing
+    for i in range(15):
+        isbn = str(i)
+        test = get_book_cached(isbn, cache)
+        assert(books[isbn] == test)
+        print(f'Test passed on book # {isbn}')
+
+
+if __name__ == "__main__":
+    main()
