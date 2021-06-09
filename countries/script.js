@@ -36,28 +36,32 @@ form.addEventListener("submit", async (e) => {
 function showCountries(countries) {
   main.innerHTML = "";
 
-  countries.forEach((country) => {
-    const { name, capital, borders, alpha3Code } = country;
-    const country_ele = document.createElement("div");
-    country_ele.classList.add("country");
+  if (countries.length == null) {
+    main.innerHTML = "<h3> No Results Found! </h3>";
+  } else {
+    countries.forEach((country) => {
+      const { name, capital, borders, alpha3Code } = country;
+      const country_ele = document.createElement("div");
+      country_ele.classList.add("country");
 
-    country_ele.innerHTML = `
-    <div class = "row"><h3 class="countryName">${name}</h3>
-    <span>${capital}</span></div>
-    <h4>Neighbour Capitals:</h4>`;
+      country_ele.innerHTML = `
+        <div class = "row"><h3 class="countryName">${name}</h3>
+        <span>${capital}</span></div>
+        <h4>Neighbour Capitals:</h4>`;
 
-    const ul = document.createElement("ul");
-    ul.setAttribute("id", "borders");
+      const ul = document.createElement("ul");
+      ul.setAttribute("id", "borders");
 
-    borders.forEach((bord) => {
-      const li = document.createElement("li");
-      li.innerHTML = `${dict[bord]}`;
-      ul.appendChild(li);
+      borders.forEach((bord) => {
+        const li = document.createElement("li");
+        li.innerHTML = `${dict[bord]}`;
+        ul.appendChild(li);
+      });
+
+      country_ele.appendChild(ul);
+      main.appendChild(country_ele);
     });
-
-    country_ele.appendChild(ul);
-    main.appendChild(country_ele);
-  });
+  }
 }
 
 async function getCountries(url) {

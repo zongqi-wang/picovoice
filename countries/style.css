@@ -1,15 +1,10 @@
 
 :root {
-    --bg: #1a1a2e;
-    --accent-color-1: #16213e;
-    --accent-color-2: #0f3460;
-    --contrast-color: #e94560;
+    --bg: #0a043c;
+    --accent-color-1: #03506f;
+    --accent-color-2: #387c8d;
     --btn: #4CAF50; 
-  
-    --text-color: #dadce1;
-    --nav-size: 5vh;
-    --border: 1px solid #474a4d;
-    --border-radius: 8px;
+    --text-color: #ffe3de;
 }
   
 body {
@@ -54,6 +49,7 @@ nav {
     background-color: var(--bg);
     width: 100%;
     padding: 0;
+    border-bottom: 1px solid var(--accent-color-2);
   }
   
   .navbar {
@@ -101,22 +97,21 @@ nav {
 main {
   width: 60%;
   min-width: 600px;
-  background-color: var(--bg);
+  padding-top:15px;
   display: flex;
   flex-flow: row wrap;
-
+  align-content: flex-start;
 }
 
 .country{
   width: 100%;
   padding: 10px 30px;
-  margin: 15px;
   height: 100%;
+  margin: 5px 0;
   border-radius: 15px;
   background-color: var(--accent-color-2);
   display: flex;
   flex-flow: row wrap;
-
 }
 
 .country .row{

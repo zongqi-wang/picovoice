@@ -8,6 +8,9 @@ The wrapper function is called get_book_cached. To use it you need to pass in a 
 
 main() has a example on using the cache and wrapper function and very basic tests.
 
-### Rest API
+### Countries rest API
+
+Features: type in the search bar and hit enter to get countries' neighbouring capitals
+Currently no responsive design because no time
 
 ### Rroduct rating
