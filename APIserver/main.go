@@ -70,6 +70,7 @@ func updateProductRating(w http.ResponseWriter, r *http.Request) {
 	Ratings = append(Ratings, rating)
 
 	fmt.Println("New ratings recorded")
+	fmt.Println(rating)
 	json.NewEncoder(w).Encode(rating)
 }
 
